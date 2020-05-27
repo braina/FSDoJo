@@ -6,48 +6,67 @@ var iter;
 var img_source = 'b';
 var random_order = false;
 
+
+var urls;
+
+(function(){
+
+	loadURLs();
+
+	console.log(img_source);
+
+	$( 'input:radio' ).change( function() {
+		var radioval = $(this).attr('cont');
+		img_source = radioval;
+		console.log(radioval);
+		console.log('---');
+	}); 
+
+}());
+
 function startTimer() {
-  
-  iter = Number($("input.times").val());
-  
-  if(img_source == 'a') {
-    images = getImages(iter);
-	initialize();    
-	changeImage(images[index]);
-	countdown(session_time, 0);
-  }
-  if(img_source == 'b')  { 
-      random_order = true;
-      loadURLs();
-      initialize();    
-      if(images[index][1] !== undefined) $(".title").html(images[index][1]);
-      else $(".title").html('');
-      changeImage(images[index]);
-      countdown(session_time, 0);       
-  }
-  
+
+	iter = Number($("input.times").val());
+
+	if(img_source == 'a') {
+		images = getImages(iter);
+		initialize();    
+		changeImage(images[index]);
+		countdown(session_time, 0);
+	}
+	if(img_source == 'b')  { 
+		random_order = true;
+		loadURLs();
+		initialize();    
+		if(images[index][1] !== undefined) $(".title").html(images[index][1]);
+		else $(".title").html('');
+		changeImage(images[index]);
+		countdown(session_time, 0);       
+	}
+
 }
 
 
 function loadURLs(){
-  var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-  req.open("get", "./urls.txt", true); // アクセスするファイルを指定
-  req.send(null); // HTTPリクエストの発行
-	
-    // レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
-    req.onload = function(){
-	var text = req.responseText; // 渡されるのは読み込んだCSVデータ
-    var arr = text.split('\n');
-    var res = [];
-        for(var i = 0; i < arr.length; i++){
-      //空白行が出てきた時点で終了
-      if(arr[i] == '') break;
-      //","ごとに配列化
-      res[i] = arr[i].split(',');
-    }
-    urls = res;
 
-    }
+	var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
+	req.open("get", "./urls.txt", true); // アクセスするファイルを指定
+	req.send(null); // HTTPリクエストの発行
+
+	// レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
+	req.onload = function(){
+		var text = req.responseText; // 渡されるのは読み込んだCSVデータ
+		var arr = text.split('\n');
+		var res = [];
+		for(var i = 0; i < arr.length; i++){
+			//空白行が出てきた時点で終了
+			if(arr[i] == '') break;
+			//","ごとに配列化
+			res[i] = arr[i].split(',');
+		}
+		urls = res;
+	}
+	images = urls;
 }
 
 function getImages(i) {
@@ -64,12 +83,12 @@ function getImages(i) {
 
 function initialize() {
 	if(!random_order) index = 0;
-  else if(random_order) index = Math.floor(Math.random()*(images.length-1));
+	else if(random_order) index = Math.floor(Math.random()*(images.length-1));
 	left_time = 0;
 	$(".slideshow").html("");
 	$(".timer-wrapper").addClass("fullscreen");
 	$(".countdown").css({ color: "white" });
-  session_time = Number($("input.session").val());
+	session_time = Number($("input.session").val());
 	interval_time = Number($("input.interval").val());
 	start_time = Date.now();
 }
@@ -95,13 +114,13 @@ function countdown(time, type) {
 			} else if (type == 1) {
 				if (index == images.length - 1)  closeTimer(); 
 				$(".countdown").css({ color: "white" });
-        if(!random_order) index++;
-        else if(random_order) {
-          images.splice( index, 1 ) ;
-          index = Math.floor(Math.random()*(images.length-1));
-          if(images[index][1] !== undefined) $(".title").html(images[index][1]);
-          else $(".title").html('');
-        }
+				if(!random_order) index++;
+				else if(random_order) {
+					images.splice( index, 1 ) ;
+					index = Math.floor(Math.random()*(images.length-1));
+					if(images[index][1] !== undefined) $(".title").html(images[index][1]);
+					else $(".title").html('');
+				}
 				changeImage(images[index]);
 				start_time = Date.now();
 				countdown(session_time, 0);
@@ -122,7 +141,7 @@ function countdown(time, type) {
 
 function closeTimer() {
 	clearTimeout(id);
-//	console.log("testse");
+	//	console.log("testse");
 	delete session_time, interval_time, start_time, left_time;
 	$(".timer-wrapper").removeClass("fullscreen");
 	$("div .timer-wrapper").html(
@@ -175,23 +194,3 @@ function drop(e) {
 function removeImage(e) {
 	$("div.imagecard-" + e).remove();
 }
-
-var urls;
-
-(function(){
-
-	loadURLs();
-	if(img_source == 'b')  images = urls;
-
-	console.log(img_source);
-
-
-	
-	$( 'input:radio' ).change( function() {
-		var radioval = $(this).attr('cont');
-		img_source = radioval;
-		console.log(radioval);
-		console.log('---');
-	}); 
-
-}());
