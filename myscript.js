@@ -48,9 +48,6 @@ function loadURLs(){
     urls = res;
 
     }
-
-
- images = urls;
 }
 
 function getImages(i) {
@@ -182,10 +179,13 @@ function removeImage(e) {
 var urls;
 
 (function(){
-   $( 'input:radio' ).change( function() {
-      var radioval = $(this).attr('cont');
-     img_source = radioval;
-      console.log(radioval);
-      console.log('---');
-   }); 
+
+	loadURLs();
+	if(image_source == 'b')  images = urls;
+	$( 'input:radio' ).change( function() {
+		var radioval = $(this).attr('cont');
+		img_source = radioval;
+		console.log(radioval);
+		console.log('---');
+	}); 
 });
