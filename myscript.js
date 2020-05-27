@@ -181,11 +181,17 @@ var urls;
 (function(){
 
 	loadURLs();
-	if(image_source == 'b')  images = urls;
+	if(img_source == 'b')  images = urls;
+
+	console.log(img_source);
+
+
+	
 	$( 'input:radio' ).change( function() {
 		var radioval = $(this).attr('cont');
 		img_source = radioval;
 		console.log(radioval);
 		console.log('---');
 	}); 
+
 });
