@@ -20,7 +20,6 @@ function startTimer() {
       random_order = true;
       loadURLs();
       initialize();    
-      console.log(images[0][1]);
       if(images[index][1] !== undefined) $(".title").html(images[index][1]);
       else $(".title").html('');
       changeImage(images[index]);
@@ -47,10 +46,6 @@ function loadURLs(){
       res[i] = arr[i].split(',');
     }
     urls = res;
-    console.log(urls);   
-
-
-
 
     }
 
