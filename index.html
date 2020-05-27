@@ -1,0 +1,73 @@
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.4.0/dist/css/uikit.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.4.0/dist/js/uikit.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/uikit@3.4.0/dist/js/uikit-icons.min.js"></script>
+
+<link href="./mystyle.css" rel="stylesheet">
+<script src="./myscript.js"></script>
+
+<div class="uk-container">
+  <h1 class="uk-margin uk-heading-small uk-text-center">FILMSTUDY道場</h1>
+
+  <div>
+    <div class='timer'>
+
+      <span class="second"> Session <input class="input session" type="text" value="180"> sec</span>
+      <span class="second"> Interval <input class="input interval" type="text" value="10"> sec</span>
+
+      <button id='start' class="uk-button uk-button-primary" onclick='startTimer()'>START</button>
+    </div>
+    
+    
+    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+            <label><input class="uk-radio" type="radio" cont='a' name="radio2" > LocalFiles</label>
+            <label><input class="uk-radio" type="radio" cont='b' name="radio2" checked> FilmGrab</label>
+            <label><input class="uk-radio" type="radio" cont='c' name="radio2"> FilmStudy</label>
+
+    </div>
+
+
+    
+<form name="test">
+<input type="file" id="selfile"><br>
+</form>
+    <div class='uk-margin files'>
+      <div class="imageInput uk-center" uk-grid>
+        <div class="" id="imageArea" ondragover="dragover(event)" ondrop="drop(event)">
+          DnD Images Here
+        </div>
+      </div>
+    </div>
+
+    <div uk-grid class="uk-grid-column-small uk-grid-row-large uk-child-width-1-4@s uk-text-center" uk-sortable="handle: .uk-card" id='prevbox'>
+    </div>
+
+  </div>
+</div>
+
+<div class='timer-wrapper'>
+  <a href='#' onclick='closeTimer();' class='uk-icon-link uk-align-left uk-margin close' uk-icon='icon: close; ratio: 3.5'></a>
+  <div class='countdown'>00:00</div>
+    <div class='title'></div>
+
+  <div class="slideshow"></div>
+  
+</div>
+
+</div>
+<!-- 
+・タイマー
+　・個別指定
+・ランダムソート
+・scrapboxなどと連携して適当な画像を指定枚数用意する
+- URLで画像追加
+
+- 3分割
+- グレースケール
+
+・一枚ずつの時間設定
+・ストーリーボード風出力（1行あたりの枚数指定？）
+-->

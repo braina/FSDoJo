@@ -1,0 +1,96 @@
+li{
+  margin: 100px;
+   list-style: none; 
+  
+}
+
+img{
+  width:100%;
+}
+
+.input{
+  width:5em;
+  height:3em;
+  text-align:center;
+  font-size:1.0em;
+}
+
+.second{
+  margin-right:40px;
+  
+}
+
+
+.fullscreen{
+  visibility:visible !important;
+  background:black;
+  margin:0;
+  padding:0;
+  left:0;
+  top:0;
+  width: 100vw;
+  height: auto;
+  min-height: 100vh;
+  position:fixed;
+}
+
+.close{
+  position:fixed;  
+  z-index:101;
+}
+
+.timer-wrapper{
+  visibility:hidden;
+  animation:2s;
+  text-align:center;
+}
+
+.slideshow{
+  height:100vh;
+}
+
+.slide-image{
+  width:90%;
+  position: absolute;
+  margin:0 ;
+  top: 50%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+}
+
+.countdown{
+  font-size:2.0em;
+  width:100vw;
+  color:white;
+  position:fixed;  
+  left: 50%;
+  transform: translate(-50%,0);
+  z-index:100;
+}
+
+
+.title{
+  font-size:1.0em;
+  width:100vw;
+  color:white;
+  position:fixed;  
+  left: 50%;
+  transform: translate(-50%,200%);
+  z-index:100;
+}
+
+
+#imageArea{
+    background-color: #f4f4f4;
+    margin: 10px;
+    padding: 10px;
+    border: #ddd dashed 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.uk-card-body{
+  padding:5px !important;
+  
+}
