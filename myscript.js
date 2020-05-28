@@ -15,14 +15,14 @@ var urls;
 
 	console.log(img_source);
 
-	$( 'input:radio' ).change( function() {
-		var radioval = $(this).attr('cont');
-		img_source = radioval;
-		console.log(radioval);
-		console.log('---');
-	}); 
 
 }());
+
+function modeSelect(e){
+	img_source = e;
+}
+
+
 
 function startTimer() {
 
