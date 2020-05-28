@@ -20,6 +20,12 @@ var urls;
 
 function modeSelect(e){
 	img_source = e;
+	if(e == 'a'){
+		$('.files').css('visibility','visible');
+	}
+	else{
+		$('.files').css('visibility','hidden');
+	}
 }
 
 

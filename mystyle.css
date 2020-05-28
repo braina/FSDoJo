@@ -23,6 +23,13 @@ img:hover{
   
 }
 
+.files{
+
+	visibility:hidden;
+}
+
+
+
 
 .fullscreen{
   visibility:visible !important;
