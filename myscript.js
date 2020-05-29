@@ -16,6 +16,7 @@ var urls;
 	console.log(img_source);
 
 
+
 }());
 
 function modeSelect(e){
@@ -56,7 +57,7 @@ function startTimer() {
 function loadURLs(){
 
 	var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-	req.open("get", "./urls.txt", true); // アクセスするファイルを指定
+	req.open("get", "./cinesco_hd.txt", true); // アクセスするファイルを指定
 	req.send(null); // HTTPリクエストの発行
 
 	// レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
@@ -147,7 +148,6 @@ function countdown(time, type) {
 
 function closeTimer() {
 	clearTimeout(id);
-	//	console.log("testse");
 	delete session_time, interval_time, start_time, left_time;
 	$(".timer-wrapper").removeClass("fullscreen");
 	$("div .timer-wrapper").html(
