@@ -3,7 +3,7 @@ var images = [];
 var index = 0;
 var iter;
 
-var img_source = 'b';
+var img_source = 'fgall';
 var random_order = false;
 
 
@@ -11,21 +11,21 @@ var urls;
 
 (function(){
 
-	loadURLs();
-
+	loadURLs(img_source);
 	console.log(img_source);
-
 
 
 }());
 
 function modeSelect(e){
 	img_source = e;
-	if(e == 'a'){
+	console.log(e);
+	if(e == 'lf'){
 		$('.files').css('visibility','visible');
 	}
 	else{
 		$('.files').css('visibility','hidden');
+		loadURLs(img_source);
 	}
 }
 
@@ -35,15 +35,15 @@ function startTimer() {
 
 	iter = Number($("input.times").val());
 
-	if(img_source == 'a') {
+	if(img_source == 'ls') {
 		images = getImages(iter);
 		initialize();    
 		changeImage(images[index]);
 		countdown(session_time, 0);
 	}
-	if(img_source == 'b')  { 
+	if(img_source == 'fgall' || img_source == 'fgch' )  { 
 		random_order = true;
-		loadURLs();
+		loadURLs(img_source);
 		initialize();    
 		if(images[index][1] !== undefined) $(".title").html(images[index][1]);
 		else $(".title").html('');
@@ -54,10 +54,11 @@ function startTimer() {
 }
 
 
-function loadURLs(){
+function loadURLs(type){
 
 	var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
-	req.open("get", "./cinesco_hd.txt", true); // アクセスするファイルを指定
+	if(type == 'fgall') req.open("get", "./urls.txt", true); // アクセスするファイルを指定
+	if(type == 'fgch') req.open("get", "./cinesco_hd.txt", true); // アクセスするファイルを指定
 	req.send(null); // HTTPリクエストの発行
 
 	// レスポンスが返ってきたらconvertCSVtoArray()を呼ぶ	
@@ -161,6 +162,7 @@ function closeTimer() {
 function dragover(e) {
 	e.preventDefault();
 }
+
 
 function drop(e) {
 	e.preventDefault();
