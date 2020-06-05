@@ -35,7 +35,7 @@ function startTimer() {
 
 	iter = Number($("input.times").val());
 
-	if(img_source == 'ls') {
+	if(img_source == 'lf') {
 		images = getImages(iter);
 		initialize();    
 		changeImage(images[index]);
