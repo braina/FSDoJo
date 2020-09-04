@@ -202,18 +202,18 @@ function removeImage(e) {
 	$("div.imagecard-" + e).remove();
 }
 
-document.addEventListener('keydown', (event) => {
-	var keyName = event.key;
-	if(keyName == 'ArrowRight'){
-		index++;
-		initialize();
-		changeImage(images[index]);
-		countdown(session_time, 0);       
-	}
-	if(keyName == 'ArrowLeft'){
-		index--;
-		initialize();
-		changeImage(images[index]);
-		countdown(session_time, 0);       
-	}
-});
+// document.addEventListener('keydown', (event) => {
+	// var keyName = event.key;
+	// if(keyName == 'ArrowRight'){
+		// index++;
+		// initialize();
+		// changeImage(images[index]);
+		// countdown(session_time, 0);       
+	// }
+	// if(keyName == 'ArrowLeft'){
+		// index--;
+		// initialize();
+		// changeImage(images[index]);
+		// countdown(session_time, 0);       
+	// }
+// });
