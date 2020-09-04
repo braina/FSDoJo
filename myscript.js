@@ -55,7 +55,6 @@ function startTimer() {
 
 
 function loadURLs(type){
-
 	var req = new XMLHttpRequest(); // HTTPでファイルを読み込むためのXMLHttpRrequestオブジェクトを生成
 	if(type == 'fgall') req.open("get", "./urls.txt", true); // アクセスするファイルを指定
 	if(type == 'fgch') req.open("get", "./cinesco_hd.txt", true); // アクセスするファイルを指定
@@ -202,3 +201,19 @@ function drop(e) {
 function removeImage(e) {
 	$("div.imagecard-" + e).remove();
 }
+
+document.addEventListener('keydown', (event) => {
+	var keyName = event.key;
+	if(keyName == 'ArrowRight'){
+		index++;
+		initialize();
+		changeImage(images[index]);
+		countdown(session_time, 0);       
+	}
+	if(keyName == 'ArrowLeft'){
+		index--;
+		initialize();
+		changeImage(images[index]);
+		countdown(session_time, 0);       
+	}
+});
